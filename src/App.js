@@ -2,7 +2,7 @@ import "./app.css";
 import { useState, useEffect, useRef } from "react";
 import FormInput from "./components/FormInput";
 import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom"; // Use Routes instead of Switch
-import FormYep from "./components/FormYep";
+import FormYup from "./components/FormYup";
 
 function App() {
   const [values, setValues] = useState({
@@ -93,7 +93,7 @@ function App() {
         </div>
 
         <Routes>
-          <Route path="/dashboard" element={<FormYep />} />
+          <Route path="/dashboard" element={<FormYup />} />
 
           <Route
             path="/"

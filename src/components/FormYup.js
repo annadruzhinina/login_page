@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
-import FormInputYep from "./FormInputYep";
+import FormInputYup from "./FormInputYup";
 
 const schema = Yup.object().shape({
   username: Yup.string()
@@ -52,18 +52,18 @@ const Dashboard = () => {
     <div className="App">
       <form onSubmit={handleSubmit(onSubmit)}>
         <h2>Register_2</h2>
-        <FormInputYep
+        <FormInputYup
           {...register("username")}
           label="Username"
           error={errors.username?.message}
         />
-        <FormInputYep
+        <FormInputYup
           {...register("password")}
           label="Password"
           type="password"
           error={errors.password?.message}
         />
-        <FormInputYep
+        <FormInputYup
           {...register("confirmPassword")}
           label="Confirm Password"
           type="password"
