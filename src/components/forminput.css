@@ -24,11 +24,17 @@ label {
   margin-top: 10px;
 }
 
-span {
+.error {
   font-size: 12px;
   padding: 3px;
   color: red;
   display: none;
+}
+
+.errorYep {
+  font-size: 12px;
+  padding: 3px;
+  color: red;
 }
 
 input:invalid[focused="true"] {

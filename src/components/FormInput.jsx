@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import "./forminput.css";
 
-const FormInput = (props) => {
+function FormInput(props) {
   const [focused, setFocused] = useState(false);
   const { label, errorMessage, onChange, id, ...inputProps } = props;
 
@@ -20,9 +20,9 @@ const FormInput = (props) => {
         }
         focused={focused.toString()}
       />
-      <span>{errorMessage}</span>
+      <span  className="error">{errorMessage}</span>
     </div>
   );
-};
+}
 
 export default FormInput;

@@ -1,6 +1,8 @@
 import "./app.css";
 import { useState, useEffect, useRef } from "react";
 import FormInput from "./components/FormInput";
+import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom"; // Use Routes instead of Switch
+import FormYep from "./components/FormYep";
 
 function App() {
   const [values, setValues] = useState({
@@ -79,32 +81,61 @@ function App() {
 
   // console.log(values);
   return (
-    <div className="App">
-      <form onSubmit={handleSubmit}>
-        <h2>Register</h2>
-        {inputs.map((input) => (
-          <FormInput
-            key={input.id}
-            {...input}
-            value={values[input.name]}
-            onChange={onChange}
-          />
-        ))}
-        <button type="submit" disabled={!isValid} ref={submitButtonRef}>
-          Submit
-        </button>
-      </form>
-      {showModal && (
-        <div className="modal">
-          <div className="modal-content">
-            <div className="close-button" onClick={() => setShowModal(false)}>
-              &times;
-            </div>
-            <p className="modal-message">Your Form is Submitted 🙌🏻</p>
-          </div>
+    <>
+      <Router>
+        <div>
+          <Link className="link" to="/">
+            1st Realisation{" "}
+          </Link>
+          <Link className="link" to="/dashboard">
+            2nd Form&Yup{" "}
+          </Link>
         </div>
-      )}
-    </div>
+
+        <Routes>
+          <Route path="/dashboard" element={<FormYep />} />
+
+          <Route
+            path="/"
+            element={
+              <div className="App">
+                <form onSubmit={handleSubmit}>
+                  <h2>Register_1</h2>
+                  {inputs.map((input) => (
+                    <FormInput
+                      key={input.id}
+                      {...input}
+                      value={values[input.name]}
+                      onChange={onChange}
+                    />
+                  ))}
+                  <button
+                    type="submit"
+                    disabled={!isValid}
+                    ref={submitButtonRef}
+                  >
+                    Submit
+                  </button>
+                </form>
+                {showModal && (
+                  <div className="modal">
+                    <div className="modal-content">
+                      <div
+                        className="close-button"
+                        onClick={() => setShowModal(false)}
+                      >
+                        &times;
+                      </div>
+                      <p className="modal-message">Your Form is Submitted 🙌🏻</p>
+                    </div>
+                  </div>
+                )}
+              </div>
+            }
+          />
+        </Routes>
+      </Router>
+    </>
   );
 }
 
